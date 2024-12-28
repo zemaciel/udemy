@@ -1,0 +1,8 @@
+.cookie-banner {
+    z-index: 1050;
+    /* Ensure it appears above other elements */
+}
+
+body {
+    background-color: #EEE4CA;
+}
