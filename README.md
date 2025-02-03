@@ -25,6 +25,8 @@ Ensure analytics/tracking scripts are loaded only after user consent.
 Check your implementation using GDPR compliance tools like CookieMetrix [https://cookiemetrix.com/] or GDPR Checker [https://gdpr.eu/].
 
 ## Bootstrap
+### Footer 
+[StickFooter](readme/StickFooter.md)
 
 
 ## WebDev Bootcamp
