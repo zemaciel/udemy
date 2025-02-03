@@ -1,0 +1,53 @@
+<footer class="bg-dark text-white text-center p-3">
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner bg-dark text-white fixed-bottom p-3 d-none">
+        <div class="container d-flex justify-content-between align-items-center">
+            <p class="mb-0">We use cookies to improve your experience. By using our site, you agree to our
+                <a href="privacy-policy.html" class="text-info">Privacy Policy</a>.
+            </p>
+            <div>
+                <button id="accept-cookies" class="btn btn-primary btn-sm">Accept</button>
+                <button id="reject-cookies" class="btn btn-outline-light btn-sm ms-2">Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <p>&copy; 2025 My Website. All rights reserved.</p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const banner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('accept-cookies');
+            const rejectBtn = document.getElementById('reject-cookies');
+
+            if (!banner || !acceptBtn || !rejectBtn) {
+                console.error("Cookie banner elements are missing.");
+                return;
+            }
+
+            // Check if the user has already made a choice
+            if (!localStorage.getItem('cookieConsent')) {
+                banner.classList.remove('d-none');
+            }
+
+            // Handle 'Accept' button click
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'accepted');
+                banner.classList.add('d-none');
+                enableAnalytics();
+            });
+
+            // Handle 'Reject' button click
+            rejectBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'rejected');
+                banner.classList.add('d-none');
+            });
+
+            // Example: Function to enable analytics
+            function enableAnalytics() {
+                console.log('Analytics enabled');
+                // Add your Google Analytics or other tracking setup here
+            }
+        });
+    </script>
+</footer>

@@ -10,6 +10,7 @@ body {
     background-color: #EEE4CA;
 }
 
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -27,6 +28,7 @@ body {
     padding: 1rem 0;
     margin-top: auto;
 }
+
 
 .cookie-banner {
     z-index: 1050;

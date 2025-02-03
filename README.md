@@ -27,7 +27,8 @@ Check your implementation using GDPR compliance tools like CookieMetrix [https:/
 ## Bootstrap
 ### Footer 
 [StickFooter](readme/StickFooter.md)
-
+### Reusing Header and Footer with Java Script 
+[Reusing Header and Footer](readme/ReusingHeaderFooter.md)
 
 ## WebDev Bootcamp
 https://zemaciel.github.io/udemy/web-dev-bootcamp
