@@ -12,7 +12,7 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById(id).innerHTML = data;
-                    if (callback) callback(); // Ensure callback (like setActiveLink) runs after loading
+                    if (callback) callback();
                 })
                 .catch(error => console.error(`Error loading ${file}:`, error));
         }
@@ -32,7 +32,46 @@
 
         window.onload = function () {
             loadComponent('header', 'components/header.html', setActiveLink);
-            loadComponent('footer', 'components/footer.html');
+            loadComponent('footer', 'components/footer.html', function () {
+                // Cookie banner logic
+                const banner = document.getElementById('cookie-banner');
+                const acceptBtn = document.getElementById('accept-cookies');
+                const rejectBtn = document.getElementById('reject-cookies');
+
+                if (!banner) {
+                    console.error("Error: Cookie banner element is missing.");
+                    return;
+                }
+                if (!acceptBtn) {
+                    console.error("Error: Accept button element is missing.");
+                    return;
+                }
+                if (!rejectBtn) {
+                    console.error("Error: Reject button element is missing.");
+                    return;
+                }
+
+
+                if (!localStorage.getItem('cookieConsent')) {
+                    banner.classList.remove('d-none');
+                }
+
+                acceptBtn.addEventListener('click', () => {
+                    localStorage.setItem('cookieConsent', 'accepted');
+                    banner.classList.add('d-none');
+                    enableAnalytics();
+                });
+
+                rejectBtn.addEventListener('click', () => {
+                    localStorage.setItem('cookieConsent', 'rejected');
+                    banner.classList.add('d-none');
+                });
+
+
+                function enableAnalytics() {
+                    console.log('Analytics enabled');
+                }
+            });
         };
     </script>
 
@@ -140,17 +179,9 @@
             </section>
         </main>
 
-
-
-        <!-- Footer -->
         <!-- Fetch Footer -->
         <div id="footer"></div>
     </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
 
 </body>
 
